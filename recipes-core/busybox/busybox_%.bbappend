@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 # We want busybox utilities to have a higher priority than coreutils
-ALTERNATIVE_PRIORITY = "100"
+ALTERNATIVE_PRIORITY = "400"
 
 SRC_URI_append = "file://myhouse.cfg"
 
