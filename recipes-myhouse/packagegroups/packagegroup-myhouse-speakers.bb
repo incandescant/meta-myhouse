@@ -9,5 +9,4 @@ inherit packagegroup
 # audio.
 RDEPENDS_${PN} = "\
     gstreamer1.0-meta-audio \
-    rygel-plugin-playbin \
 "

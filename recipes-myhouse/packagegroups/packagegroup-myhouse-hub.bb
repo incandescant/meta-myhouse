@@ -9,5 +9,4 @@ inherit packagegroup
 RDEPENDS_${PN} = "\
     gstreamer1.0-meta-audio \
     gstreamer1.0-meta-video \
-    rygel-plugin-media-export \
 "
