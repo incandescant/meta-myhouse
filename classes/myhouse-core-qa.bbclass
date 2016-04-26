@@ -11,11 +11,17 @@ STATEFUL_FILES = "\
 # any files in /etc we don't want to update with the OS are removed from the
 # bundle directories
 python myhouse_rm_config_files () {
-  oscore = d.expand('${DEPLOY_DIR_SWUPD}/image/${OS_VERSION}/os-core')
-  for tgt in (d.getVar('STATEFUL_FILES', True) or '').split():
-    try:
-      os.remove(os.path.join(oscore, tgt))
-    except Exception as e:
-      bb.note('Failed to delete file: %s due to %s' % (tgt, str(e)))
+    bundles = (d.getVar('SWUPD_BUNDLES', True) or '').split()
+    bundles.append('os-core')
+    bundledir = d.expand('${DEPLOY_DIR_SWUPD}/image/${OS_VERSION}/')
+    for bundle in bundles:
+        bdir = bundledir + bundle
+        for tgt in (d.getVar('STATEFUL_FILES', True) or '').split():
+            fpath = bdir + tgt
+            bb.debug(3, "Trying to remove %s (%s), listed in STATEFUL_FILES, from swupd bundle directory for '%s'." % (tgt, fpath, bundle))
+            try:
+                os.remove(fpath)
+            except Exception as e:
+                bb.debug(1, "Couldn't delete %s (%s) in STATEFUL_FILES from swupd bundle directory for '%s':\n%s" % (tgt, fpath, bundle, str(e)))
 }
 do_swupd_update[prefuncs] += "myhouse_rm_config_files"
