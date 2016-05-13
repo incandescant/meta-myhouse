@@ -15,6 +15,7 @@ IMAGE_INSTALL = "\
 
 # swupd bundle definitions
 SWUPD_BUNDLES = "developer hub speakers"
+
 # The developer bundle is used to provide additional tools on the device for
 # our developers
 BUNDLE_CONTENTS[developer] = "\
@@ -25,6 +26,12 @@ BUNDLE_CONTENTS[developer] = "\
     connman-tools \
     coreutils \
 "
+# We also want to include headers and debuginfo in the developer bundle
+BUNDLE_FEATURES[developer] = "\
+    dev-pkgs \
+    dbg-pkgs \
+"
+
 # Speakers is our first product build on myHouse — the extra packages required
 # for the product are defined in the packagegroup-myhouse-speakers recipe
 BUNDLE_CONTENTS[speakers] = "\
