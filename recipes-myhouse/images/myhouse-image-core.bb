@@ -2,7 +2,7 @@ SUMMARY = "Core OS image for myHouse and configuration of os-core and bundles"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
-inherit core-image swupd-image myhouse-core-qa
+inherit core-image swupd-image
 
 # The base image is pretty minimal. We use the core boot packagegroup to start
 # and also add connman for easier network setup.
