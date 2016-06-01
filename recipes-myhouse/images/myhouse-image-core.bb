@@ -14,7 +14,8 @@ IMAGE_INSTALL = "\
 "
 
 # swupd bundle definitions
-SWUPD_BUNDLES = "developer hub speakers"
+SWUPD_BUNDLES = "developer hub renderer"
+SWUPD_EMPTY_BUNDLES = "speakers"
 
 # The developer bundle is used to provide additional tools on the device for
 # our developers
@@ -34,9 +35,10 @@ BUNDLE_FEATURES[developer] = "\
 
 # Speakers is our first product build on myHouse — the extra packages required
 # for the product are defined in the packagegroup-myhouse-speakers recipe
-BUNDLE_CONTENTS[speakers] = "\
+BUNDLE_CONTENTS[renderer] = "\
     packagegroup-myhouse-media \
     packagegroup-myhouse-speakers \
+    packagegroup-myhouse-screen \
 "
 
 # Hub is our product that will act as a personal cloud and command & control for
@@ -49,6 +51,6 @@ BUNDLE_CONTENTS[hub] = "\
 # We also want the option to build an extra image that provides a software load
 # for our speakers product without having to flash the core image then manually
 # add the speakers bundle.
-SWUPD_IMAGES = "hub speakers"
+SWUPD_IMAGES = "hub renderer"
 SWUPD_IMAGES[hub] = "hub"
-SWUPD_IMAGES[speakers] = "speakers"
+SWUPD_IMAGES[speakers] = "renderer"
