@@ -53,4 +53,4 @@ BUNDLE_CONTENTS[hub] = "\
 # add the speakers bundle.
 SWUPD_IMAGES = "hub renderer"
 SWUPD_IMAGES[hub] = "hub"
-SWUPD_IMAGES[speakers] = "renderer"
+SWUPD_IMAGES[renderer] = "renderer"
