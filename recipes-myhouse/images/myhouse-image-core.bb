@@ -10,12 +10,23 @@ IMAGE_INSTALL = "\
     packagegroup-core-boot\
     avahi-daemon \
     connman \
-    connman-client \
 "
 
 # swupd bundle definitions
-SWUPD_BUNDLES = "developer hub renderer"
+SWUPD_BUNDLES = "developer hub renderer test"
 SWUPD_EMPTY_BUNDLES = "speakers"
+
+# A bundle of utilities useful for testing images
+BUNDLE_CONTENTS[test] = "\
+    bash \
+    connman-client \
+    connman-tools \
+    coreutils \
+"
+# Include ptest packages when available
+BUNDLE_FEATURES[test] = "\
+    ptest-pkgs \
+"
 
 # The developer bundle is used to provide additional tools on the device for
 # our developers
@@ -23,9 +34,6 @@ BUNDLE_CONTENTS[developer] = "\
     packagegroup-core-sdk \
     packagegroup-core-standalone-sdk-target \
     packagegroup-core-tools-debug \
-    bash \
-    connman-tools \
-    coreutils \
 "
 # We also want to include headers and debuginfo in the developer bundle
 BUNDLE_FEATURES[developer] = "\
